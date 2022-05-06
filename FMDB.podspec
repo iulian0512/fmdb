@@ -5,7 +5,8 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/ccgus/fmdb'
   s.license = 'MIT'
   s.author = { 'August Mueller' => 'gus@flyingmeat.com' }
-  s.source = { :git => 'https://github.com/iulian0512/fmdb.git', :tag => "master" }
+#  s.source = { :git => 'https://github.com/iulian0512/fmdb.git', :tag => "master" }
+  s.source = { :git => 'file:///Users/ics/github/fmbd', }
   s.requires_arc = true
   s.ios.deployment_target = '11.0'
   s.default_subspec = 'spatialite'
@@ -13,13 +14,29 @@ Pod::Spec.new do |s|
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
-  # use sqlite3 + spatialite
-  s.subspec 'spatialite' do |ss|
-    s.source_files   = '**/*.{h,m}'
-    s.preserve_paths = '**/*.{h,m}'
-    ss.vendored_libraries= 'spatialite/lib/*.a'
+  # # use sqlite3 + spatialite
+  # s.subspec 'spatialite' do |ss|
+  #   ss.source_files = 'src/fmdb/FM*.{h,m}' , 'src/spatialite/include/**/*.h'
+  #   ss.exclude_files = 'src/fmdb.m'
+  #   ss.preserve_paths = 'src/spatialite/include/**/*.h'
+  #   #ss.private_header_files = 'src/spatialite/include/**/*.h'
+  #   #ss.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '${PODS_ROOT}/FMDB/src/spatialite/include'}
+  #   ss.vendored_libraries= 'src/spatialite/lib/*.a'
+  #   ss.libraries= 'c++','iconv','charset','z'
+  #   ss.header_mappings_dir = "src/spatialite/include"
+  #   ss.header_dir = 'src'
+  # end
 
+  s.subspec 'spatialite' do |ss|
+    ss.source_files = 'src/fmdb/FM*.{h,m}'
+    ss.exclude_files = 'src/fmdb.m'
+    ss.header_dir = 'fmdb'
+    ss.preserve_paths = 'src/spatialite/include/**/*.h'
+    ss.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '${PODS_ROOT}/FMDB/src/spatialite/include'}
+    ss.vendored_libraries= 'src/spatialite/lib/*.a'
+    ss.libraries= 'c++','iconv','charset','z'
   end
+  
   # use the built-in library version of sqlite3
   s.subspec 'standard' do |ss|
     ss.library = 'sqlite3'

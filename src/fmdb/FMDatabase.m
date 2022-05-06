@@ -87,6 +87,7 @@ NS_ASSUME_NONNULL_END
         _crashOnErrors              = NO;
         _maxBusyRetryTimeInterval   = 2;
         _isOpen                     = NO;
+        _spalitecache =nil;
     }
     
     return self;
