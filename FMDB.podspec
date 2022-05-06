@@ -5,27 +5,21 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/ccgus/fmdb'
   s.license = 'MIT'
   s.author = { 'August Mueller' => 'gus@flyingmeat.com' }
-  s.source = { :git => 'https://github.com/iulian0512/fmdb.git', :tag => "#{s.version}" }
+  s.source = { :git => 'https://github.com/iulian0512/fmdb.git', :tag => "master" }
   s.requires_arc = true
-  s.ios.deployment_target = '9.0'
-  s.osx.deployment_target = '10.11'
-  s.watchos.deployment_target = '2.0'
-  s.default_subspec = 'standard'
+  s.ios.deployment_target = '11.6'
+  s.default_subspec = 'spatialite'
+  #exclude arm arch from simulator builds
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
   # use sqlite3 + spatialite
   s.subspec 'spatialite' do |ss|
-    ss.source_files = 'src/fmdb/FM*.{h,m}', 'src/spatialite/include/*.h'
-    ss.exclude_files = 'src/fmdb.m'
-    ss.header_dir = 'fmdb'
-    ss.vendored_libraries= 
-    'src/spatialite/lib/libsqlite3.a',
-    'src/spatialite/lib/libgeos.a', 
-    'src/spatialite/lib/libgeos_c.a',
-    'src/spatialite/lib/libproj.a',
-    'src/spatialite/lib/librttopo.a',
-    'src/spatialite/lib/libspatialite.a'
-  end
+    s.source_files   = '**/*.{h,m}'
+    s.preserve_paths = '**/*.{h,m}'
+    ss.vendored_libraries= 'spatialite/lib/*.a'
 
+  end
   # use the built-in library version of sqlite3
   s.subspec 'standard' do |ss|
     ss.library = 'sqlite3'
