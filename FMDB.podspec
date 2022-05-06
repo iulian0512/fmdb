@@ -5,8 +5,7 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/ccgus/fmdb'
   s.license = 'MIT'
   s.author = { 'August Mueller' => 'gus@flyingmeat.com' }
-#  s.source = { :git => 'https://github.com/iulian0512/fmdb.git', :tag => "master" }
-  s.source = { :git => 'file:///Users/ics/github/fmbd', }
+  s.source = { :git => 'https://github.com/iulian0512/fmdb.git', :tag => "master" }
   s.requires_arc = true
   s.ios.deployment_target = '11.0'
   s.default_subspec = 'spatialite'
