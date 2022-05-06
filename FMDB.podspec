@@ -9,23 +9,8 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.ios.deployment_target = '11.0'
   s.default_subspec = 'spatialite'
-  #exclude arm arch from simulator builds
-  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-
+  
   # # use sqlite3 + spatialite
-  # s.subspec 'spatialite' do |ss|
-  #   ss.source_files = 'src/fmdb/FM*.{h,m}' , 'src/spatialite/include/**/*.h'
-  #   ss.exclude_files = 'src/fmdb.m'
-  #   ss.preserve_paths = 'src/spatialite/include/**/*.h'
-  #   #ss.private_header_files = 'src/spatialite/include/**/*.h'
-  #   #ss.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '${PODS_ROOT}/FMDB/src/spatialite/include'}
-  #   ss.vendored_libraries= 'src/spatialite/lib/*.a'
-  #   ss.libraries= 'c++','iconv','charset','z'
-  #   ss.header_mappings_dir = "src/spatialite/include"
-  #   ss.header_dir = 'src'
-  # end
-
   s.subspec 'spatialite' do |ss|
     ss.source_files = 'src/fmdb/FM*.{h,m}'
     ss.exclude_files = 'src/fmdb.m'
