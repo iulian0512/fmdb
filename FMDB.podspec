@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author = { 'August Mueller' => 'gus@flyingmeat.com' }
   s.source = { :git => 'https://github.com/iulian0512/fmdb.git', :tag => "master" }
   s.requires_arc = true
-  s.ios.deployment_target = '11.6'
+  s.ios.deployment_target = '11.0'
   s.default_subspec = 'spatialite'
   #exclude arm arch from simulator builds
   s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
