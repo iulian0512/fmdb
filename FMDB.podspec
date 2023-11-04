@@ -15,10 +15,11 @@ Pod::Spec.new do |s|
     ss.source_files = 'src/fmdb/FM*.{h,m}'
     ss.exclude_files = 'src/fmdb.m'
     ss.header_dir = 'fmdb'
-    ss.preserve_paths = 'src/spatialite/include/**/*.h'
-    ss.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '${PODS_ROOT}/FMDB/src/spatialite/include'}
-    ss.vendored_libraries= 'src/spatialite/lib/*.a'
+    ss.vendored_frameworks = 'libspatialite.xcframework'
     ss.libraries= 'c++','iconv','charset','z'
+    spec.prepare_command = <<-CMD
+    unzip -o fmdb_spatialite_bin/libspatialite_framework.zip -d .
+    CMD
   end
   
   # use the built-in library version of sqlite3

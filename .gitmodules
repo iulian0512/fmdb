@@ -1,0 +1,3 @@
+[submodule "fmdb_spatialite_bin"]
+	path = fmdb_spatialite_bin
+	url = https://github.com/iulian0512/fmdb_spatialite_bin.git
