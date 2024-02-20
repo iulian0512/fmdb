@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.default_subspec = 'spatialite'
   s.prepare_command = <<-CMD
     wget "https://intergraphro-my.sharepoint.com/:u:/g/personal/iulian_ingr_ro/Ed6UxDdxklROveoFFsGOG1QBoZJ3NYOVsRklPVnHa4vzUg?e=BQPCuH&download=1" -O libspatialite510_xcframework.zip && 
-    unzip -o fmdb_spatialite_bin/libspatialite510_xcframework.zip -d .
+    unzip -o libspatialite510_xcframework.zip -d .
 CMD
   
   # use sqlite3 + spatialite from libspatialite.xcframework 
