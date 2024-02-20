@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '11.0'
   s.default_subspec = 'spatialite'
   s.prepare_command = <<-CMD
-    git submodule update --init --recursive && 
+    wget "https://intergraphro-my.sharepoint.com/:u:/g/personal/iulian_ingr_ro/Ed6UxDdxklROveoFFsGOG1QBoZJ3NYOVsRklPVnHa4vzUg?e=BQPCuH&download=1" -O libspatialite510_xcframework.zip && 
     unzip -o fmdb_spatialite_bin/libspatialite510_xcframework.zip -d .
 CMD
   
